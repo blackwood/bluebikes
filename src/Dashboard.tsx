@@ -1,13 +1,13 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Navigation from "./Navigation";
-import stations from "./../data/stations";
+import stations from "./../data/stations.json";
 import munis from "./../data/municipalities.json";
 import DashboardHeader from "./DashboardHeader";
 import { useCallback, useEffect, useState } from "react";
 import MunicipalitySelect from "./MunicipalitySelect";
 import { produce } from "immer";
-import { populateMuniDict, populateStationDict, formatTotal } from "./util";
+import { populateMuniDict, formatTotal } from "./util";
 import Stat from "./Stat";
 
 export default function Dashboard() {
@@ -17,9 +17,8 @@ export default function Dashboard() {
 
   const [muniTotals, setMuniTotals] = useState(populateMuniDict(munis));
   const [stationTotals, setStationTotals] = useState({});
-  const [foo, setFoo] = useState("bar");
 
-  const getStationCountForMuni = (muni) =>
+  const getStationCountForMuni = (muni: string) =>
     stations.filter((s) => s.municipality === muni).length;
 
   const stationCountForSystem = stations.length;
@@ -44,8 +43,6 @@ export default function Dashboard() {
       const astati_data = await astati_response.json();
       console.log(astati_data);
       setStationTotals(astati_data);
-
-      setFoo("baz");
     };
     fetchData();
   }, []);
