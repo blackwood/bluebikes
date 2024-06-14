@@ -1,9 +1,6 @@
 export default ({ munis, onSelect }) => (
   <form class="max-w-sm mx-auto">
-    <label
-      for="countries"
-      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-    >
+    <label for="countries" class="block mb-2 text-sm font-medium text-gray-900">
       Select an option
     </label>
     <select

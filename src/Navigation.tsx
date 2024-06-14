@@ -18,10 +18,6 @@ const user = {
   imageUrl:
     "https://1.gravatar.com/avatar/f0bd9be3f8bd0401b5977dd473fed4cc5f6838292057b81a26523e82a64e90ad?size=32",
 };
-const navigation = [
-  { name: "Dashboard", href: "/", current: true },
-  { name: "About", href: "/about" },
-];
 
 const userNavigation = [
   { name: "View on Github", href: "https://github.com/blackwood/bluebikes" },
@@ -42,25 +38,8 @@ export default function Navigation() {
                 <div className="flex-shrink-0">
                   <img className="h-8 w-8" src={BikeSVG} alt="bluebikes data" />
                 </div>
-                <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
+                <div className="px-3 text-white">bluebikes data explorer</div>
+                <div className="hidden md:block"></div>
               </div>
               <div className="hidden md:block">
                 <div className="ml-4 flex items-center md:ml-6">
@@ -122,24 +101,6 @@ export default function Navigation() {
           </div>
 
           <DisclosurePanel className="md:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-              {navigation.map((item) => (
-                <DisclosureButton
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </DisclosureButton>
-              ))}
-            </div>
             <div className="border-t border-gray-700 pb-3 pt-4">
               <div className="flex items-center px-5">
                 <div className="flex-shrink-0">
