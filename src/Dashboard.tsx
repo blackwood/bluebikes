@@ -1,4 +1,5 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Navigation from "./Navigation";
 import stations from "./../data/stations.json";
@@ -9,6 +10,11 @@ import MunicipalitySelect from "./MunicipalitySelect";
 import { produce } from "immer";
 import { populateMuniDict, formatTotal } from "./util";
 import Stat from "./Stat";
+
+const defaultIcon = L.icon({
+  iconUrl: "/marker-icon.png",
+  iconSize: [25, 41],
+});
 
 export default function Dashboard() {
   const [filters, setFilters] = useState({
@@ -81,6 +87,7 @@ export default function Dashboard() {
                   <Marker
                     key={station.id}
                     position={[station.lat, station.long]}
+                    icon={defaultIcon}
                   >
                     <Popup>
                       <h3 className="text-lg">{station.name}</h3>
